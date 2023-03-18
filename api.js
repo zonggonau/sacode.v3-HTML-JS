@@ -30,7 +30,7 @@ function show(data) {
     if (r.status === "active") {
       div += `
       <div class="col-12 col-md-6 col-lg-4 mb-5 res-margin">
-                    <a href="/weekend.html?id=${r.id}">
+                    <a href="/weekend?id=${r.id}">
                       <div class="single-review card">
                         <div class="card-top p-4">
                           <h4 class="text-primary mt-4 mb-3">
@@ -53,7 +53,7 @@ function show(data) {
                           <div class="quot-icon">
                             <img
                               class="avatar-md"
-                              src="/assets/img/icon/quote.png"
+                              src="assets/img/icon/quote.png"
                               alt=""
                               width={500}
                               height={500}
