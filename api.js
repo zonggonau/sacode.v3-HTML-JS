@@ -30,7 +30,7 @@ function show(data) {
     if (r.status === "active") {
       div += `
       <div class="col-12 col-md-6 col-lg-4 mb-5 res-margin">
-                    <a href="/weekend?id=${r.id}">
+                    <a href="/sacode.v3-HTML-JS/weekend?id=${r.id}">
                       <div class="single-review card">
                         <div class="card-top p-4">
                           <h4 class="text-primary mt-4 mb-3">
