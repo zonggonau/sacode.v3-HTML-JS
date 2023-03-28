@@ -1,6 +1,7 @@
 // api url
 const api_url = "https://adminpanel.sacode.web.id/api/sacodeweekend/list";
-const url_storage = "https://adminpanel.sacode.web.id/file/poster/";
+const url_poster = "https://adminpanel.sacode.web.id/file/poster/";
+const url_contributors = "https://adminpanel.sacode.web.id/file/contributors/";
 
 // Defining async function
 async function getapi(url) {
@@ -9,7 +10,7 @@ async function getapi(url) {
 
   // Storing data in form of JSON
   var data = await response.json();
-  console.log(data);
+  // console.log(data);
   if (response) {
     hideloader();
   }
@@ -67,7 +68,7 @@ function show(data) {
                           <div class="reviewer-thumb">
                             <img
                               class="avatar-lg radius-100"
-                              src="${url_storage}${r.speaker.profile_picture}"
+                              src="${url_contributors}${r.speaker.profile_picture}"
                               alt=""
                               width={500}
                               height={500}
@@ -105,12 +106,12 @@ getDataById(url);
 async function getDataById(url) {
   var req = await fetch(url);
   var res = await req.json();
-  var data = res.data;
-  console.log(data);
+  var data = await res.data;
   showDetail(data);
 }
 
 function showDetail(data) {
+  console.log(data);
   var div = `
   <div class="row align-items-center h-100">
   <div class="col-12 col-md-7">
@@ -131,7 +132,7 @@ function showDetail(data) {
       class="welcome-thumb"
     >
       <img
-        src="${url_storage}${data.poster}"
+        src="${url_poster}${data.poster}"
         alt="${data.topic}"
         width="500"
         height="500"
