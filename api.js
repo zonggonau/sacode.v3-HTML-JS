@@ -1,6 +1,6 @@
 // api url
-const api_url = "https://adminpanel.sacode.web.id/api/sacodeweekend";
-const url_storage = "https://adminpanel.sacode.web.id/storage/";
+const api_url = "https://adminpanel.sacode.web.id/api/sacodeweekend/list";
+const url_storage = "https://adminpanel.sacode.web.id/file/poster/";
 
 // Defining async function
 async function getapi(url) {
@@ -9,6 +9,7 @@ async function getapi(url) {
 
   // Storing data in form of JSON
   var data = await response.json();
+  console.log(data);
   if (response) {
     hideloader();
   }
@@ -26,11 +27,12 @@ function hideloader() {
 function show(data) {
   var div = "";
   // Loop to access all rows
+  // <a href="/sacode.v3-HTML-JS/weekend?id=${r.id}">
   for (let r of data.data) {
     if (r.status === "active") {
       div += `
       <div class="col-12 col-md-6 col-lg-4 mb-5 res-margin">
-                    <a href="/sacode.v3-HTML-JS/weekend?id=${r.id}">
+                    <a href="/sacode.v3-HTML-JS/weekend.html?slug=${r.slug}/detail">
                       <div class="single-review card">
                         <div class="card-top p-4">
                           <h4 class="text-primary mt-4 mb-3">
@@ -65,7 +67,7 @@ function show(data) {
                           <div class="reviewer-thumb">
                             <img
                               class="avatar-lg radius-100"
-                              src="https://adminpanel.sacode.web.id/storage/${r.poster}"
+                              src="${url_storage}${r.speaker.profile_picture}"
                               alt=""
                               width={500}
                               height={500}
@@ -74,10 +76,10 @@ function show(data) {
 
                           <div class="reviewer-meta media-body align-self-center ml-4">
                             <h5 class="reviewer-name color-primary mb-2">
-                              ${r.first_name} ${r.last_name}
+                              ${r.speaker.first_name} ${r.speaker.last_name}
                             </h5>
                             <h6 class="text-secondary fw-3">
-                              ${r.job_title}
+                              ${r.speaker.job_title}
                             </h6>
                           </div>
                         </div>
@@ -95,9 +97,8 @@ function show(data) {
 }
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
-const id = params.get("id");
-console.log(id);
-var url = `https://adminpanel.sacode.web.id/api/sacodeweekend/${id}`;
+const slug = params.get("slug");
+var url = `https://adminpanel.sacode.web.id/api/sacodeweekend/${slug}`;
 
 getDataById(url);
 
@@ -105,6 +106,7 @@ async function getDataById(url) {
   var req = await fetch(url);
   var res = await req.json();
   var data = res.data;
+  console.log(data);
   showDetail(data);
 }
 
