@@ -1,7 +1,7 @@
 // api url
-const api_url = "https://adminpanel.sacode.web.id/api/sacodeweekend/list";
-const url_poster = "https://adminpanel.sacode.web.id/storage/sacodesweekends/";
-const url_contributors = "https://adminpanel.sacode.web.id/file/contributors/";
+const api_url = "https://admincpanel.sacode.web.id/api/sacodeweekend/list";
+const url_poster = "https://admincpanel.sacode.web.id/file/sacodesweekends/";
+const url_contributors = "https://admincpanel.sacode.web.id/file/contributors/";
 
 // Defining async function
 async function getapi(url) {
@@ -99,7 +99,7 @@ function show(data) {
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
 const slug = params.get("slug");
-var url = `https://adminpanel.sacode.web.id/api/sacodeweekend/${slug}`;
+var url = `https://admincpanel.sacode.web.id/api/sacodeweekend/${slug}`;
 
 getDataById(url);
 
@@ -107,6 +107,7 @@ async function getDataById(url) {
   var req = await fetch(url);
   var res = await req.json();
   var data = await res.data;
+  console.log(data);
   showDetail(data);
 }
 
