@@ -1,6 +1,6 @@
 // api url
 const api_url = "https://adminpanel.sacode.web.id/api/sacodeweekend/list";
-const url_poster = "https://adminpanel.sacode.web.id/file/poster/";
+const url_poster = "https://adminpanel.sacode.web.id/storage/sacodesweekends/";
 const url_contributors = "https://adminpanel.sacode.web.id/file/contributors/";
 
 // Defining async function
